@@ -6,6 +6,7 @@ import crypto from "crypto";
 
 /* ================= REGISTER ================= */
 export const registerUser = async (req, res) => {
+  res.redirect(`${frontendURL}/email-verified`);
   try {
     const { name, email, password } = req.body;
 
@@ -63,7 +64,7 @@ export const verifyEmail = async (req, res) => {
     await user.save();
 
     // redirection automatique vers le site
-    res.redirect("http://localhost:5174/email-verified");
+    res.redirect(`${frontendURL}/email-verified`);
   } catch (error) {
     res.status(500).send("Email verification failed");
   }
